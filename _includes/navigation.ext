@@ -1,0 +1,16 @@
+<div id="header" class="NoMargin">
+<div id="navbar" class="NoMargin">
+  <a id="navbar-title" href="{{site.url}}/"><h1>Home</h1></a>
+    
+  <input type="checkbox" id="navbar-check"/>
+  <label id="navbar-toggle-closed" class="navbar-toggle" onclick="" title="Menu" for="navbar-check">=</label>
+  <label id="navbar-toggle-open" class="navbar-toggle" onclick="" title="Menu" for="navbar-check">=</label>
+    
+  <div id="navbar-list-div" class="NoMargin">
+  <ul>
+    <li><a href="{{site.url}}/projects/">Projects</a></li>
+    <li><a href="{{site.url}}/about/">About me</a></li>
+  </ul>
+  </div>
+</div>
+</div>

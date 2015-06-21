@@ -254,17 +254,18 @@ a#navbar-title:hover h1 {
     color: white;
   }
 }
-
+/*
 @media only screen and (min-width: 950px) and (min-height: 400px) {
   #navbar {
     position: fixed;
   }
 }
-
+*/
 @media only screen and (min-width: 1060px) and (min-height: 500px) {
   #navbar {
+/*
     position: fixed;
-    
+*/
     left: -moz-calc((100% - 1060px) / 2);
     width: -moz-calc(1060px);
     
@@ -513,58 +514,13 @@ pre {
 
 
 /* HOMEPAGE */
-/*
-.HomePageLeftColumn, .HomePageRightColumn {
-  display: inline-block;
-  height: auto;
-  width: 48%;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
-  vertical-align: middle;
+
+.Home_Frame {
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  margin-bottom: 1em;
 }
-
-.HomePageLeftColumn img, .HomePageRightColumn img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-}
-
-@media only screen and (max-width: 399px) {
-  a.HomePageScreenshotThumbnail {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-  }
-}
-
-@media only screen and (min-width: 400px) and (max-width: 574px) {
-  a.HomePageScreenshotThumbnail {
-    width: 50%;
-    height: 50%;
-    margin: 0;
-  }
-}
-
-@media only screen and (min-width: 575px) {
-  a.HomePageScreenshotThumbnail {
-    float: left;
-    width: 50%;
-    height: 50%;
-    margin: 0;
-  }
-}
-
-a.HomePageScreenshotThumbnail img {
-  display: block;
-  margin: 0;
-}
-*/
-
-
-
-
-
 
 
 /* GLOBAL */
@@ -610,23 +566,7 @@ a.HomePageScreenshotThumbnail img {
     width: 72%;
   }
 }
-/*
-.Projects_ProjectFrame {
-  border-style: solid;
-  border-width: 1px;
-}
 
-.Projects_PictureLeft {
-  float: left;
-  width: 25%;
-  margin-bottom: 1em;
-}
-
-.Projects_TextRight {
-  float: right;
-  width: 73%;
-}
-*/
 
 /* ABOUT */
 

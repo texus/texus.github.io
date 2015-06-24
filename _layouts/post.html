@@ -7,6 +7,7 @@ layout: default
   {{ content }}
 </article>
 
+{% if page.comments %}
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'texus';
@@ -21,3 +22,4 @@ layout: default
     })();
 </script>
 <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+{% endif %}

@@ -4,7 +4,7 @@ layout: post
 title:  Cross-platform custom-shaped windows
 date:   2015-06-20 17:45
 ---
-This post will explain how to create transparent (non-rectangular) windows on Windows, Linux and Mac OS X. The shape of the window will be determined by an image with a transparent background. If the pixel is transparent then it will not be part of the window. It is assumed that the size of the image and the size of the window are the same.
+This post will explain how to create transparent (non-rectangular) windows in c++ on Windows, Linux and Mac OS X. The shape of the window will be determined by an image with a transparent background. If the pixel is transparent then it will not be part of the window. It is assumed that the size of the image and the size of the window are the same.
 
 Each operating system requires different code and will be discussed separately. Below you will find code snippets, but for a full example check this [github project](https://github.com/texus/TransparentWindows) which creates a window with a custom shape with SFML.
 <!--more-->

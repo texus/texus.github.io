@@ -4,7 +4,7 @@ layout: post
 title:  Cross-platform semi-transparent windows
 date:   2015-06-25 01:04
 ---
-In the [previous post]({% post_url 2015-06-20-cross-platform-custom-shaped-windows %}) I talked about custom shaped windows, in this post I will explain how to create semi-transparent windows on Windows, Linux and Mac OS X. The full code can be found in the same [github repository](https://github.com/texus/TransparentWindows). Each operating system will again be discussed separately as they require different code.
+In the [previous post]({% post_url 2015-06-20-cross-platform-custom-shaped-windows %}) I talked about custom shaped windows, in this post I will explain how to create semi-transparent windows in c++ on Windows, Linux and Mac OS X. The full code can be found in the same [github repository](https://github.com/texus/TransparentWindows). Each operating system will again be discussed separately as they require different code.
 <!--more-->
 
 The alpha variable used below is an unsigned char which means its value is between 0 and 255.

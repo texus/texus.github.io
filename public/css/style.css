@@ -499,7 +499,7 @@ div.statcounter {
 
 div.highlight {
     margin-top: 0em;
-    margin-bottom: 1.2em;
+    margin-bottom: 1.5em;
 }
 
 pre {
@@ -519,6 +519,12 @@ pre {
   border-width: 1px;
   padding: 10px;
   margin-bottom: 1em;
+}
+
+.Home_PostDate {
+  font-style: italic;
+  font-size: 0.8em;
+  color: #333333;
 }
 
 

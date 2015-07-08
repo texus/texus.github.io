@@ -1,12 +1,12 @@
 ---
 title: Texus's Blog
-layout: page
+layout: default
 ---
+<h2>{{ page.title }} <a href="/feed.xml"><img alt="RSS icon" src="/resources/feed-icon-28x28.png" width=28 height=28 /></a></h2>
 <div>
   {% for post in paginator.posts %}
   <article class="post">
-    <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-    <em><small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small></em>
+    <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <span class="Home_PostDate">(<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>)</span></h3>
     {{ post.excerpt }}
     <a href="{{ post.url }}">Read more</a>
   </article>

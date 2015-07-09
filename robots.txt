@@ -1,0 +1,4 @@
+Sitemap: https://texus.me/sitemap.xml
+
+User-agent: *
+Allow: /

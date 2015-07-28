@@ -12,10 +12,9 @@ I failed at doing this about a year ago, but now that I just updated to gcc 5.2,
 The first question that has to be answered is how to return the resulting string. On compile time we can't use types like std::string or std::vector and the parameters can't be changed. You could use [std::initializer_list](http://en.cppreference.com/w/cpp/utility/initializer_list)&lt;char&gt; as the return type which allows directly constructing an std::string from the lowercase string literal so that you can write code like this:
 {% highlight c++ %}
 std::string str{to_lower("TEST")};
-static_assert(*to_lower("TEST").begin() == 't', "ERROR");
 {% endhighlight %}
 
-But as you can see from the second line, it is not that easy to check the code with static asserts. That is why I use a const std::array&lt;char, N&gt; as return type in the code below which allows verifying every character at compile time.
+But it is not that easy to check the code with static asserts. That is why I use a const std::array&lt;char, N&gt; as return type in the code below which allows verifying every character at compile time.
 
 The code consists of three functions: one that converts a single character, one helper function that makes the conversion of the string and finally the function that you have to call. It was easy to see that I needed to use a variadic template pack expansion to construct the return value in one line, but this was the thing that seemed impossible. How do you change an N-character string into N parameters? The answer finally came with the [std::integer_sequence](http://en.cppreference.com/w/cpp/utility/integer_sequence) type that was added in c++14. The std::make_integer_sequence will create a sequence of which the first argument is the type and the other arguments are a sequence of numbers from 0 to N-1. That was all I needed to get the thing working.
 {% highlight c++ %}

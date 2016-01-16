@@ -46,3 +46,44 @@ func2();
 {% endhighlight %}
 
 That's it! As you can see, you did not need to have access to the variables at the moment of binding. I hope this ends up being useful to somebody someday.
+
+Final result:
+{% highlight c++ %}
+// The function that we are going to call, it just prints out the variable here.
+// This function can even receive a reference to the variable and change it!
+template <typename T>
+void print(T& obj)
+{
+    std::cout << obj << std::endl;
+}
+
+int main()
+{
+    // We will use a string in this example, but any other type would do (if you give it a valid value below)
+    using Type = std::string;
+
+    // The pointer that we are binding contains a nullptr to start with,
+    // but it will get a different value after the binding!
+    void* ptr = nullptr;
+
+    // The default value is not used, we will change it after the binding is complete.
+    // This is done to show that the reference is bound, not the actual value.
+    Type obj = "not printed";
+
+    // Now actually bind the parameter to the function.
+    // A lambda function is bound here that will dereference the pointer when the function gets called.
+    auto func = std::bind(print<Type>,
+                          std::bind([](void* obj) -> Type& { return *static_cast<Type*>(obj); },
+                                    std::ref(ptr))
+                         );
+
+    // Even after binding, we can make the pointer point to a different place!
+    ptr = static_cast<void*>(&obj);
+
+    // The value of the variable can be adapted at any time
+    obj = "printed";
+
+    // Call the function with the value of the variable that the pointer is currently pointing at
+    func();
+}
+{% endhighlight %}

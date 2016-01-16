@@ -186,7 +186,7 @@ When removing all comments we end up with this short example which you should no
 struct IncrementElements
 {
     IncrementElements(std::vector<double>* dataPtr) :
-        m_data(dataPtr)
+        m_data{dataPtr}
     {
     }
 

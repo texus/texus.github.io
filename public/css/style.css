@@ -487,6 +487,11 @@ div.highlight {
     margin-bottom: 1.5em;
 }
 
+figure.highlight {
+    margin: 0;
+    margin-bottom: 1.5em;
+}
+
 pre {
   line-height: 1.4em;
   margin: 0;

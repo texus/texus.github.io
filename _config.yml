@@ -3,10 +3,10 @@ highlighter: pygments
 
 url:                 https://texus.me
 permalink:           pretty
-relative_permalinks: true
 paginate:            10
 
 excerpt_separator: <!--more-->
 
 gems:
   - jekyll-sitemap
+  - jekyll-paginate

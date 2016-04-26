@@ -482,11 +482,6 @@ div.statcounter {
 .highlight .ss { color: #0000FF } /* Literal.String.Symbol */
 .highlight .il { color: #0000FF } /* Literal.Number.Integer.Long */
 
-div.highlight {
-    margin-top: 0em;
-    margin-bottom: 1.5em;
-}
-
 figure.highlight {
     margin: 0;
     margin-bottom: 1.5em;

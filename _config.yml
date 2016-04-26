@@ -1,5 +1,5 @@
 lsi: false
-highlighter: pygments
+highlighter: rouge
 
 url:                 https://texus.me
 permalink:           pretty

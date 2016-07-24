@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  Debugging on OpenMote-CC2538 with J-Link (using nemiver)
 date:   2016-01-25 19:02

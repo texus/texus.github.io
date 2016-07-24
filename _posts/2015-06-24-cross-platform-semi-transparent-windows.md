@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  Cross-platform semi-transparent windows
 date:   2015-06-25 01:04

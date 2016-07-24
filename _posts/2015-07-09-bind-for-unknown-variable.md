@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  std::bind for unknown variable
 date:   2015-07-09 01:28

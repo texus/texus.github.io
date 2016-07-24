@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  Cross-platform custom-shaped windows
 date:   2015-06-20 17:45

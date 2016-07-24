@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  Using parallel_for from Intel TBB
 date:   2015-11-17 15:20

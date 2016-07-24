@@ -597,3 +597,22 @@ pre {
 .About_LinkNextToIcon {
   margin-left: 22px;
 }
+
+
+/* Disqus comments */
+
+#disqus_activate a {
+  display: block;
+  text-align: center;
+  background-color: rgb(200, 200, 200);
+  border: 1px solid black;
+  padding: 1em;
+  line-height: 1.6em;
+  font-size: 1.1em;
+  text-decoration: none;
+  color: rgb(50, 50, 50);
+}
+
+#disqus_activate a:hover {
+    color: black;
+}

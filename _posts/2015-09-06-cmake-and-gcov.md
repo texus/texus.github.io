@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  CMake and Gcov
 date:   2015-09-06 03:04

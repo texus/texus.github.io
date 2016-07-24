@@ -1,5 +1,4 @@
 ---
-comments: true
 layout: post
 title:  Converting string to lowercase at compile time with c++14
 date:   2015-07-28 00:05

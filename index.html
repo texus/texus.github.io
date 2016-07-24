@@ -7,8 +7,10 @@ layout: default
   {% for post in paginator.posts %}
   <article class="post">
     <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <span class="Home_PostDate">(<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>)</span></h3>
-    {{ post.excerpt }}
-    <a href="{{ post.url }}">Read more</a>
+    {{post.excerpt}}
+    {% if post.content != post.excerpt %}
+        <a href="{{ post.url }}">Read more</a>
+    {% endif %}
   </article>
   {% endfor %}
 </div>

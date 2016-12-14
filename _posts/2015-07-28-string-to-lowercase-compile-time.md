@@ -6,14 +6,13 @@ date:   2015-07-28 00:05
 With the addition of the [constexpr](http://en.cppreference.com/w/cpp/language/constexpr) keyword in c++11 it is possible to calculate the result of function calls on compile time. I knew that it was possible to e.g. count the brackets in a string, but I wanted to take things a little bit further, I wanted to change the string.
 
 I failed at doing this about a year ago, but now that I just updated to gcc 5.2, I decided to give it another shot.
+
+Update: latest code can be found [in this Gist](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c)
 <!--more-->
 
-The first question that has to be answered is how to return the resulting string. On compile time we can't use types like std::string or std::vector and the parameters can't be changed. You could use [std::initializer_list](http://en.cppreference.com/w/cpp/utility/initializer_list)&lt;char&gt; as the return type which allows directly constructing an std::string from the lowercase string literal so that you can write code like this (edit: this does not work at compile time, see update).
-{% highlight c++ %}
-std::string str{to_lower("TEST")};
-{% endhighlight %}
+The first question that has to be answered is how to return the resulting string. On compile time we can't use types like std::string or std::vector and the parameters can't be changed. You could use [std::initializer_list](http://en.cppreference.com/w/cpp/utility/initializer_list)&lt;char&gt; as the return type which allows directly constructing an std::string from the lowercase string literal (edit: this was not actually working at compile time, see update).
 
-But it is not that easy to check the code with static asserts. That is why I use a const [std::array](http://en.cppreference.com/w/cpp/container/array)&lt;char, N&gt; as return type in the code below which allows verifying every character at compile time.
+But it is not that easy to check the code with static asserts. That is why I use an [std::array](http://en.cppreference.com/w/cpp/container/array)&lt;char, N&gt; as return type in the code below which allows verifying every character at compile time.
 
 The code consists of three functions: one that converts a single character, one helper function that makes the conversion of the string and finally the function that you have to call. It was easy to see that I needed to use a variadic template pack expansion to construct the return value in one line, but this was the thing that seemed impossible. How do you change an N-character string into N parameters? I found the answer when I came across the [std::integer_sequence](http://en.cppreference.com/w/cpp/utility/integer_sequence) type that was added in c++14. The std::make\_integer\_sequence will create a sequence of which the first argument is the type and the other arguments are a sequence of numbers from 0 to N-1. That was all I needed to get the thing working.
 {% highlight c++ %}
@@ -50,7 +49,7 @@ int main()
 
 <b>Update</b> <em><small>(4 Aug 2015)</small></em>
 
-After some experimenting it seems like the method does not work well with std::initializer\_list&lt;char&gt; and the std::array was only used for testing and isn't that useful. So I looked for an alternative way to return the data. I basically wanted to return a raw array, but any c++ programmer should knows that you can't do that, so I had to use a simple wrapper instead and changed the return types of the functions to array\_wrapper&lt;N&gt;.
+After some experimenting it seems like the method does not work well with std::initializer\_list&lt;char&gt; and the std::array was only used for testing and isn't that useful. So I looked for an alternative way to return the data. I basically wanted to return a raw array, but you of course can't do that, so I had to use a simple wrapper instead and changed the return types of the functions to array\_wrapper&lt;N&gt;.
 {% highlight c++ %}
 template <std::size_t N>
 struct array_wrapper {
@@ -68,3 +67,10 @@ In order to execute it on compile time the line must be split:
 constexpr auto temp = to_lower("TEST");
 std::string str{temp.arr};
 {% endhighlight %}
+
+The `.arr` that you have to add behind the returned value is of course also not the most user-friendly solution.
+
+
+<b>Update</b> <em><small>(14 Dec 2016)</small></em>
+
+I have created a new implementation which is a slightly more friendly, you don't have to add `.arr` after the result call anymore. The code however still requires 2 lines to be run at compile time, trying to turn it into a useful one-liner still causes everything to be called at runtime. The latest code including performance information can be found [in this Gist](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c).

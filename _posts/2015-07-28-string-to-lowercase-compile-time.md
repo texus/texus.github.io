@@ -3,11 +3,12 @@ layout: post
 title:  Converting string to lowercase at compile time with c++14
 date:   2015-07-28 00:05
 ---
+<b>Update</b>: The code has been completely rewritten and this post is no longer a relevant explanation. The latest code can be found [in this Gist](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c) with explanations in the comments.
+
 With the addition of the [constexpr](http://en.cppreference.com/w/cpp/language/constexpr) keyword in c++11 it is possible to calculate the result of function calls on compile time. I knew that it was possible to e.g. count the brackets in a string, but I wanted to take things a little bit further, I wanted to change the string.
 
 I failed at doing this about a year ago, but now that I just updated to gcc 5.2, I decided to give it another shot.
 
-Update: latest code can be found [in this Gist](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c)
 <!--more-->
 
 The first question that has to be answered is how to return the resulting string. On compile time we can't use types like std::string or std::vector and the parameters can't be changed. You could use [std::initializer_list](http://en.cppreference.com/w/cpp/utility/initializer_list)&lt;char&gt; as the return type which allows directly constructing an std::string from the lowercase string literal (edit: this was not actually working at compile time, see update).
@@ -73,4 +74,11 @@ The `.arr` that you have to add behind the returned value is of course also not 
 
 <b>Update</b> <em><small>(14 Dec 2016)</small></em>
 
-I have created a new implementation which is a slightly more friendly, you don't have to add `.arr` after the result call anymore. The code however still requires 2 lines to be run at compile time, trying to turn it into a useful one-liner still causes everything to be called at runtime. The latest code including performance information can be found [in this Gist](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c).
+I have created a [new implementation](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c/b9e33044c834dfc0a2f34ade344467145870f841) which is a slightly more friendly, you don't have to add `.arr` after the result call anymore. The code however still requires 2 lines to be run at compile time, trying to turn it into a useful one-liner still causes everything to be called at runtime.
+
+<b>Update</b> <em><small>(16 Dec 2016)</small></em>
+
+I have rewritten [the code](https://gist.github.com/texus/8d867996e7a073e1498e8c18d920086c) based on [this StackOverflow answer](http://stackoverflow.com/questions/15858141/conveniently-declaring-compile-time-strings-in-c/15912824#15912824) that Yury linked in the comments. The code can now be used like this:
+{% highlight c++ %}
+const char* str = TOLOWER("TEST");
+{% endhighlight %}

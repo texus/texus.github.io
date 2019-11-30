@@ -5,13 +5,15 @@ layout: default
 <h2>{{ page.title }} <a href="/feed.xml"><img alt="RSS icon" src="/resources/feed-icon-20x20.png" width=20 height=20 /></a></h2>
 <div>
   {% for post in paginator.posts %}
-  <article class="post">
-    <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <span class="Home_PostDate">(<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>)</span></h3>
-    {{post.excerpt}}
-    {% if post.content != post.excerpt %}
-        <a href="{{ post.url }}">Read more</a>
-    {% endif %}
-  </article>
+    {% unless post.unlisted %}
+      <article class="post">
+        <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a> <span class="Home_PostDate">(<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>)</span></h3>
+        {{post.excerpt}}
+        {% if post.content != post.excerpt %}
+            <a href="{{ post.url }}">Read more</a>
+        {% endif %}
+      </article>
+    {% endunless %}
   {% endfor %}
 </div>
 

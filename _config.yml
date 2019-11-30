@@ -7,6 +7,6 @@ paginate:            10
 
 excerpt_separator: <!--more-->
 
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-paginate

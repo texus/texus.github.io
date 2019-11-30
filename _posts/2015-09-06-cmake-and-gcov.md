@@ -2,6 +2,7 @@
 layout: post
 title:  CMake and Gcov
 date:   2015-09-06 03:04
+unlisted: true
 ---
 While trying to use Gcov for my project I noticed that it doesn't work well together with CMake. The problem is that CMake generates files named file.cpp.gcno while gcov searches for file.gcno. Luckily, there is an easy solution.
 <!--more-->
